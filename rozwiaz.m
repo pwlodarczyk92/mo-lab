@@ -1,4 +1,5 @@
-function [x] = rozwiaz(R, b)
+function [x] = rozwiaz(R,p,q,b)
+    b = b(p);
     m = size(R);
     z = zeros(m, 1);
     x = zeros(m, 1);
@@ -10,6 +11,7 @@ function [x] = rozwiaz(R, b)
         x(i) = z(i)/R(i,i);
         z(1:i-1) -= R(1:i-1,i).*x(i);
     end
+    x(q) = x;
 end
 
 
