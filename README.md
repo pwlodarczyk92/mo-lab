@@ -36,3 +36,16 @@ x =
 
 
 ```
+
+### Przypadki testowe
+ 
+Przypadki testowe, wyniki dla nich oraz komentarze można wyświetlić uruchamiając skrypt `script.m`.
+
+### Podsumowanie
+
+Wariant 0. (bez wyboru elementu głównego) daje nieprawidłowe wyniki (lub nie daje żadnego wyniku) w wielu, łatwych do spotkania w praktyce układach równań liniowych (zero lub wartości bliskie zeru na przekątnej), z tego względu nie powinien być on wykorzystywany, jeśli nie mamy informacji o kształcie macierzy dla której rozwiązujemy zadanie.  
+Zarówno wariant 1. jak i wariant 2. radzą sobie podobnie, dość dobrze, w znacznej większości sytuacji, jednakże wariant 2. jest o wiele bardziej kosztowny ze względu na konieczność wielokrotnego szukania elementu największego w dużej części macierzy. Co więcej istnieją przypadki (jak np. kwadrat magiczny), dla których nawet ta metoda daje niesatysfakcjonujące (a właściwie bezwartościowe) wyniki. W sytuacjach tych i tak trzeba skorzystać z innych technik, wydaje się więc że wariant 2. (Z pełnym wyborem elementu głównego) nie przedstawia zwykle praktycznej przewagi nad wariantem 1.
+
+### Oszacowanie błędu
+
+Błąd względny wyniku `x` szacujemy przez iloczyn błędu względnego `b` oraz wskaźnika uwarunkowania `A` (patrz plik blad.m).
