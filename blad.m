@@ -4,7 +4,7 @@ function [] = blad(A, b, s)
     [x] = rozwiaz(R,p,q,b);
     [r] = b - A * x;
     x
-    rel_error = cond(A) * norm(r) / norm(b)
+    rel_error = norm(x - A\b) / norm(A\b)
 end
 
 

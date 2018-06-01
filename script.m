@@ -24,7 +24,7 @@ printf("\n");
 
 printf("Dla macierzy dobrze uwarunkowanej, metoda bez wyboru elementu głównego może dać wynik z dużym błędem\n");
 printf("jeśli któryś z elementów głównych będzie bliski zeru:\n");
-A = [0.000000001,1;1,1]
+A = [0.00000000001,1;1,1]
 A_cond = cond(A)
 b = transpose([1,2])
 blad(A, b, 0);
