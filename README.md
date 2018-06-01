@@ -16,7 +16,7 @@ function [x] = rozwiaz(R, p, q, b)
 ```  
 znajduje się w pliku `rozwiaz.m`
 
-Funkcja zwracająca normę macierzy `A` oraz błąd względny rozwiązania, tj `|b - Ax|/|x|`:  
+Funkcja zwracająca normę macierzy `A` oraz błąd względny rozwiązania, obliczony na podstawie rozwiązania obliczonego przez octave:  
 ``` 
 function [] = blad(A, b, s)
 ```
