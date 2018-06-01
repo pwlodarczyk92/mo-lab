@@ -1,0 +1,278 @@
+Dla najprostszej macierzy jednostkowej, wszystkie metody zwracają prawidłowy, dokładny wynik:
+A =
+
+   1   0
+   0   1
+
+b =
+
+   1
+   1
+
+
+wariant 0: 
+x =
+
+   1
+   1
+
+rel_error = 0
+
+wariant 1: 
+x =
+
+   1
+   1
+
+rel_error = 0
+
+wariant 2: 
+x =
+
+   1
+   1
+
+rel_error = 0
+
+Dla macierzy z zerem na przekątnej, metoda bez wyboru elementu głównego w oczywisty sposób zwraca błąd ze względu na dzielenie przez zero:
+A =
+
+   0   1
+   1   0
+
+b =
+
+   1
+   1
+
+
+wariant 0: 
+x =
+
+   NaN
+   NaN
+
+rel_error = NaN
+
+Pozostałe metody zwracają prawidłowy wynik:
+
+wariant 1: 
+x =
+
+   1
+   1
+
+rel_error = 0
+
+wariant 2: 
+x =
+
+   1
+   1
+
+rel_error = 0
+
+Dla macierzy dobrze uwarunkowanej, metoda bez wyboru elementu głównego może dać wynik z dużym błędem
+jeśli któryś z elementów głównych będzie bliski zeru:
+A =
+
+   1.0000e-11   1.0000e+00
+   1.0000e+00   1.0000e+00
+
+A_cond =  2.6180
+b =
+
+   1
+   2
+
+
+wariant 0: 
+x =
+
+   1.00000
+   1.00000
+
+rel_error =    5.8499e-08
+
+Pozostałe metody zwracają wynik ze znacznie mniejszym błędem względnym:
+
+wariant 1: 
+x =
+
+   1.00000
+   1.00000
+
+rel_error = 0
+
+wariant 2: 
+x =
+
+   1.00000
+   1.00000
+
+rel_error = 0
+
+Wyniki we wszystkich trzech przypadkach wyświetlają się jako taka sama wartość, 
+ponieważ wyświetlanych jest jedynie kilka pierwszych cyfr rozwinięcia dziesiętnego.
+wyświetlenie większej liczby cyfr możliwe jest poprzez 'odkomentowanie' drugiej linii pliku, 
+pogarsza to jednak czytelność wyników.
+
+Błąd wyniku może być duży dla każdego wariantu, jeśli macierz jest źle uwarunkowana
+A =
+
+   1.0000   1.0000
+   1.0000   1.0000
+
+A_cond =    4.0000e+07
+b =
+
+   2.0000
+   2.0001
+
+
+wariant 0: 
+x =
+
+  -998.00
+  1000.00
+
+rel_error =    2.2760e-16
+
+wariant 1: 
+x =
+
+  -998.00
+  1000.00
+
+rel_error =    2.2760e-16
+
+wariant 2: 
+x =
+
+  -998.00
+  1000.00
+
+rel_error =    8.0016e-11
+
+
+Podobnie wyglądać będzie sytuacja dla innych, źle uwarunkowanych macierzy, np. macierzy hilberta:
+A =
+
+   1.000000   0.500000   0.333333   0.250000   0.200000   0.166667
+   0.500000   0.333333   0.250000   0.200000   0.166667   0.142857
+   0.333333   0.250000   0.200000   0.166667   0.142857   0.125000
+   0.250000   0.200000   0.166667   0.142857   0.125000   0.111111
+   0.200000   0.166667   0.142857   0.125000   0.111111   0.100000
+   0.166667   0.142857   0.125000   0.111111   0.100000   0.090909
+
+A_cond =    1.4951e+07
+b =
+
+   1
+   2
+   3
+   4
+   5
+   6
+
+
+wariant 0: 
+x =
+
+  -2.1600e+02
+   7.3500e+03
+  -5.7120e+04
+   1.6632e+05
+  -2.0160e+05
+   8.5932e+04
+
+rel_error =    6.2950e-11
+
+wariant 1: 
+x =
+
+  -2.1600e+02
+   7.3500e+03
+  -5.7120e+04
+   1.6632e+05
+  -2.0160e+05
+   8.5932e+04
+
+rel_error =    8.0803e-11
+
+wariant 2: 
+x =
+
+  -2.1600e+02
+   7.3500e+03
+  -5.7120e+04
+   1.6632e+05
+  -2.0160e+05
+   8.5932e+04
+
+rel_error =    1.0160e-10
+
+
+Czy magicznego kwadratu, którego wskaźnik uwarunkowania jest wyjątkowo duży:
+A =
+
+   16    2    3   13
+    5   11   10    8
+    9    7    6   12
+    4   14   15    1
+
+A_cond =    8.1480e+16
+b =
+
+   1
+   2
+   3
+   4
+
+
+wariant 0: 
+x =
+
+   2.2518e+15
+   6.7554e+15
+  -6.7554e+15
+  -2.2518e+15
+
+rel_error =    5.6627e+16
+
+wariant 1: 
+x =
+
+  -5.6295e+14
+  -1.6888e+15
+   1.6888e+15
+   5.6295e+14
+
+rel_error =    1.4157e+16
+
+wariant 2: 
+x =
+
+  -7.5060e+14
+  -2.2518e+15
+   2.2518e+15
+   7.5060e+14
+
+rel_error =    1.8876e+16
+
+W tym przypadku błąd jest gigantyczny dla każdego wariantu.
+Dużo bliższy do prawidłowego rozwiązania jest wynik podawany przez octave, z błędem kilkudziesięciu procent:
+x_prim =
+
+   0.023529
+   0.123529
+   0.123529
+   0.023529
+
+b_prim =
+
+   1.3000
+   2.9000
+   2.1000
+   3.7000
+
