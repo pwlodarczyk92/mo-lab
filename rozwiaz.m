@@ -1,4 +1,4 @@
-function [x] = rozwiaz(R,p,q,b)
+function [x] = rozwiaz(R, p, q, b)
     b = b(p);
     m = size(R);
     z = zeros(m, 1);

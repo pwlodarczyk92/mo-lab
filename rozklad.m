@@ -13,9 +13,10 @@ function [R, p, q] = rozklad(A, s)
             p = max_p(1) + i - 1;
             q = i;
         elseif s == 2
-            [max_v, max_pq] = max(abs(A(i:m, i:m)));
-            p = max_pq(1) + i - 1;
-            q = max_pq(2) + i - 1;
+            maxval = max(max(abs(A(i:m, i:m))));
+            [p_raw, q_raw] = find(A(i:m, i:m)==maxval);
+            p = p_raw(1) + i - 1;
+            q = q_raw(1) + i - 1;
         end
     end
 
@@ -23,6 +24,7 @@ function [R, p, q] = rozklad(A, s)
     q = 1:m;
     for i = 1:(m-1)
         [p_idx, q_idx] = pivot(i);
+
         p([i p_idx]) = p([p_idx i]);
         q([i q_idx]) = q([q_idx i]);
 
@@ -31,6 +33,7 @@ function [R, p, q] = rozklad(A, s)
 
         pivot_value = A(i, i);
         pivot_row = A(i, i:m);   
+
         for j = i+1:m
             scale = A(j, i)/pivot_value;
             A(j,i:m) -= pivot_row.*scale;
