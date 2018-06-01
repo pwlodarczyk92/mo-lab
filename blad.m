@@ -1,9 +1,10 @@
 function [] = blad(A, b, s)
+    printf("\nwariant %i: \n", s);
     [R, p, q] = rozklad(A, s);
     [x] = rozwiaz(R,p,q,b);
     [r] = b - A * x;
-    A_norm = norm(A)
-    rel_error = norm(r) / norm(x)
+    x
+    rel_error = cond(A) * norm(r) / norm(b)
 end
 
 
