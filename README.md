@@ -5,12 +5,22 @@
 ### Rozwiązanie
 
 Funkcja opisana w treści zadania, zwracająca czynniki rozkładu trójkątno-trójkątnego:  
-```function [R, p, q] = rozklad(A, s)```  
+```
+function [R, p, q] = rozklad(A, s)
+```  
 znajduje się w pliku `rozklad.m`.
 
-Funkcja orpisana w treści zadania, rozwiązująca układ równań `Ax=b` wykorzystując rozkład `R, p, q`:  
-```function [x] = rozwiaz(R, p, q, b)```  
+Funkcja opisana w treści zadania, rozwiązująca układ równań `Ax=b` wykorzystując rozkład `R, p, q`:  
+```
+function [x] = rozwiaz(R, p, q, b)
+```  
 znajduje się w pliku `rozwiaz.m`
+
+Funkcja zwracająca normę macierzy `A` oraz błąd względny rozwiązania, tj `|b - Ax|/|x|`:  
+``` 
+function [] = blad(A, b, s)
+```
+znajduje się w pliku `blad.m`
 
 ### Wykorzystanie
 
